@@ -1,34 +1,51 @@
 package br.com.poo.contas;
 
 public class ContaCorrente extends Conta{
-	
-	
-	public ContaCorrente() {}
-	
-	public ContaCorrente(String nome) {
-		this.setTitular(nome);
-		System.out.println("Seja bem vindo ao banco " + nome + " !");
+
+	public ContaCorrente(String titular, String agencia, String numConta,String tipoConta) {
+		super(titular, agencia, numConta, tipoConta);
 	}
-	
+
 	//@Override
-	public void sacar(double valor) {
+	public String sacar(Double valor) {
+		if(saldo < valor) {
+			return "Saldo Insuficiente";
+		}
+		else {
+			saldo -= valor;
+			return "Saque realizado";
+		}
+		
 		
 		
 	}
 
 	//@Override
-	public void depositar(double valor) {
-		
-		
+	public void depositar(Double valor) {
+		if(valor > 0) {
+			saldo += valor;
+			System.out.println("Seu depósito foi realizado!");
+		}else {
+			System.out.println("Não foi possivel realizar");
+		}
 	}
 
-	//\\@Override
-	public void transferir(double valor, Conta destino) {
-	
+	//@Override
+	public void transferir(Double valor, Conta destino) {
+		if(valor > 0 && saldo >= valor) {
+			destino.depositar(valor);
+		
+		}
 		
 	}
 	
-	
+	public void salario(Double valor) {
+		
+	//double salario = 1000.0;
+	//double bonus = salario > 1000 ? 0.10 : 0.15;
+	//System.out.println(bonus);
+}
+
 	
 	
 	
