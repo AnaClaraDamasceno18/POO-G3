@@ -2,8 +2,7 @@ package br.com.poo.contas;
 
 public abstract class Conta {
 	
-	private	String titular;
-	private	String agencia;
+	protected String agencia;
 	private	String numConta;
 	private	double saldo;
 	
@@ -16,17 +15,7 @@ public abstract class Conta {
 	public abstract void transferir(double valor, Conta destino);
 	
 	
-	
-	
-	
-	
-	
-	public String getTitular() {
-		return titular;
-	}
-	public void setTitular(String titular) {
-		this.titular = titular;
-	}
+
 	public String getAgencia() {
 		return agencia;
 	}
