@@ -1,9 +1,14 @@
 package br.com.poo.contas;
 
+import br.com.poo.pessoa.Cliente;
+
 public class ContaPoupanca extends Conta {
 
-	public ContaPoupanca(String titular, String agencia, String numConta, String tipoConta) {
-		super(titular, agencia, numConta, tipoConta);
+	
+	
+
+	public ContaPoupanca(Cliente cpf, String agencia, String numConta, Double saldo) {
+		super(cpf ,agencia, numConta, saldo, "Poupança");
 		
 	}
 
@@ -41,8 +46,8 @@ public class ContaPoupanca extends Conta {
 		if (valor > 0 && saldo >= valor) {
 			destino.depositar(valor);
 			System.out.println("Transferência realizada!");
-		}else {
-			System.out.println("Tente novamente");
+		} else {
+			System.out.println("Transferência inválida, tente novamente");
 		}
 
 	}
