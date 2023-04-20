@@ -1,12 +1,13 @@
 package br.com.poo.pessoa;
 
 public class Gerente extends Funcionario{
-
 	
-
-	public Gerente(String nome, String cpf, String senha) {
-		super(nome, cpf, senha, "Gerente");
-
+	public Gerente() {
+		super();
+	}
+	
+	public Gerente(String tipoFuncionario, String nome, String cpf, Double salario, String senha, String agenciaResp) {
+		super(tipoFuncionario, nome, cpf, salario, senha);
 	}
 
 	@Override
@@ -14,4 +15,11 @@ public class Gerente extends Funcionario{
 		System.out.println("mostrar menu cliente");
 		
 	}
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

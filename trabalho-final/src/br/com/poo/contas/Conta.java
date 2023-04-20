@@ -11,16 +11,22 @@ public abstract class Conta {
 	private String numConta;
 	protected Double saldo = 0.0;
 	private String tipoConta;
+	private String titular;
+	private String cpf;
 
-	private static Map<Cliente, Conta> contas = new HashMap<>();
+	public static Map<String, Conta> contas = new HashMap<>();
 
-	public Conta(Cliente cpf, String agencia, String numConta, Double saldo, String tipoConta) {
-		
+	public Conta(String tipoConta, String agencia, String numConta, String titular, String cpf, Double saldo) {
+		super();
+		this.tipoConta = tipoConta;
 		this.agencia = agencia;
 		this.numConta = numConta;
+		this.titular = titular;
+		this.cpf = cpf;
 		this.saldo = saldo;
-		this.tipoConta = tipoConta;
-		contas.put(cpf, this);
+	}
+
+	public Conta() {
 	}
 
 	public abstract String sacar(Double valor);
@@ -72,11 +78,28 @@ public abstract class Conta {
 				"\nTipo da conta: " + getTipoConta();
 	}
 	
-	public static Map<Cliente, Conta> getContas() {
+	public static Map<String, Conta> getContas() {
 		return contas;
 	}
 
-	public static void setContas(Map<Cliente, Conta> contas) {
+	public static void setContas(Map<String, Conta> contas) {
 		Conta.contas = contas;
 	}
+
+	public String getTitular() {
+		return titular;
+	}
+
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	
 }

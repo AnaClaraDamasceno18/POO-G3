@@ -2,8 +2,10 @@ package br.com.poo.pessoa;
 
 public class OperadorCaixa extends Funcionario {
 
-	public OperadorCaixa(String nome, String cpf, String senha) {
-		super(nome, cpf, senha, "OperadorCaixa");
+	private static final String PESSOA = "OperadorCaixa";
+	
+	public OperadorCaixa(String nome, String cpf, String senha, String PESSOA) {
+		super(nome, cpf, senha, PESSOA);
 	}
 
 	@Override

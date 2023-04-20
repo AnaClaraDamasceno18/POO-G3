@@ -1,15 +1,9 @@
 package br.com.poo.contas;
 
-import br.com.poo.pessoa.Cliente;
-
 public class ContaPoupanca extends Conta {
-
 	
-	
-
-	public ContaPoupanca(Cliente cpf, String agencia, String numConta, Double saldo) {
-		super(cpf ,agencia, numConta, saldo, "Poupança");
-		
+	public ContaPoupanca(String tipoConta, String agencia, String numConta, String titular, String cpf, Double saldo) {
+		super(tipoConta, agencia, numConta, titular, cpf, saldo);
 	}
 
 	double rendimento;

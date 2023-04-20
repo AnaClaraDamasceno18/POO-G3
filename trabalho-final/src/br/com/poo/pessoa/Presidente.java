@@ -1,9 +1,11 @@
 package br.com.poo.pessoa;
 
 public class Presidente extends Funcionario {
-
-	public Presidente(String nome, String cpf, String senha) {
-		super(nome, cpf, senha, "Presidente");
+	
+	private static final String PESSOA = "Cliente";
+	
+	public Presidente(String nome, String cpf, String senha, String PESSOA) {
+		super(nome, cpf, senha, PESSOA);
 	}
 
 	@Override

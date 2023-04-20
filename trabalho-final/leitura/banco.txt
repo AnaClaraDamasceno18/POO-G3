@@ -1,0 +1,5 @@
+Corrente;1234-5;00102-2;Déby Souza;111;1000.00
+Poupanca;1234-5;00203-3;Maria Eduarda;222;3000.00
+Poupanca;1234-5;00304-4;Caio;333;3000.00
+Gerente;Caio;333;10000.00;caio123;1234-5
+Cliente;Ana;444;123;1234-5;00304-4

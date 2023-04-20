@@ -10,15 +10,11 @@ public abstract class Pessoa {
 	String senha;
 	String tipoPessoa;
 
-	private static Map<String, Pessoa> pessoas = new HashMap<>();
+	public Pessoa(String nome, String cpf, String senha, String agencia, String numeroConta) {
 
-	public Pessoa(String nome, String cpf, String senha, String tipoPessoa) {
-		this.nome = nome;
-		this.cpf = cpf;
-		this.senha = senha;
-		this.tipoPessoa = tipoPessoa;
-		pessoas.put(this.cpf, this);
-
+	}
+	
+	public Pessoa() {
 	}
 
 	public String getNome() {
@@ -47,14 +43,6 @@ public abstract class Pessoa {
 		this.tipoPessoa = tipoPessoa;
 	}
 
-	public static Map<String, Pessoa> getPessoas() {
-		return pessoas;
-	}
-
-	public static void setPessoas(Map<String, Pessoa> pessoas) {
-		Pessoa.pessoas = pessoas;
-	}
-
 	public abstract void mostrarMenu(Pessoa pessoaEncontrada);
 
 	@Override
@@ -63,4 +51,5 @@ public abstract class Pessoa {
 				+ this.tipoPessoa + "\n";
 
 	}
+	
 }

@@ -1,14 +1,10 @@
 package br.com.poo.contas;
 
-import br.com.poo.pessoa.Cliente;
-
 public class ContaCorrente extends Conta {
 
-	
-	
-	public ContaCorrente(Cliente cpf , String agencia, String numConta, Double saldo) {
-		super(cpf, agencia, numConta, saldo, "Corrente");
-		
+
+	public ContaCorrente(String tipoConta, String agencia, String numConta, String titular, String cpf, Double saldo) {
+		super(tipoConta, agencia, numConta, titular, cpf, saldo);
 	}
 
 	@Override
