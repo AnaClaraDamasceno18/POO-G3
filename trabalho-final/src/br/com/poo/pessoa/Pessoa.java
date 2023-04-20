@@ -11,8 +11,10 @@ public abstract class Pessoa {
 	String tipoPessoa;
 
 	public Pessoa(String nome, String cpf, String senha, String agencia, String numeroConta) {
-
-	}
+        this.nome = nome;
+        this.cpf = cpf;
+        this.senha = senha;
+    }
 	
 	public Pessoa() {
 	}

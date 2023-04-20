@@ -47,9 +47,9 @@ public class MenuLogin {
 		}
 		
 		//System.out.println(funcionario.toString());
-		System.out.println(cliente.toString());
+		//System.out.println(cliente.toString());
 		
-		while(funcionario == null || !(funcionario.getSenha().equals(senha)) || cliente == null || !(cliente.getSenha().equals(senha))) {
+		while((funcionario != null && !(funcionario.getSenha().equals(senha))) || (cliente != null && !(cliente.getSenha().equals(senha)))) {
 			System.out.println("CPF e/ou Senha incorreto(s).");
 			
 			System.out.println("Digite seu CPF: ");
