@@ -18,7 +18,6 @@ public class Cliente extends Pessoa {
 	@Override
 	public void mostrarMenu(Pessoa pessoaEncontrada) {
 		System.out.println("mostrar menu Cliente");
-		
 	}
 
 	public static Map<String, Cliente> getMapaCliente() {

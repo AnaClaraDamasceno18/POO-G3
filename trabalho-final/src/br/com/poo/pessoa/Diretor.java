@@ -2,14 +2,21 @@ package br.com.poo.pessoa;
 
 public class Diretor extends Funcionario{
 
-	private static final String PESSOA = "Diretor";
-
-	public Diretor(String nome, String cpf, String senha, String PESSOA) {
-		super(nome, cpf, senha, PESSOA);
-		}
+	public Diretor() {
+		super();
+	}
+	
+	public Diretor(String tipoFuncionario, String nome, String cpf, Double salario, String senha, String agenciaResp) {
+		super(tipoFuncionario, nome, cpf, salario, senha);
+	}
 
 	@Override
 	public void mostrarMenu(Pessoa pessoaEncontrada) {
 		System.out.println("mostrar menu Diretor");
+	}
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		return 0;
 	}
 }

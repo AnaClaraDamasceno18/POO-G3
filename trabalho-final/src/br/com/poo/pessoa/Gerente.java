@@ -18,7 +18,6 @@ public class Gerente extends Funcionario{
 
 	@Override
 	public int compare(Object o1, Object o2) {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 

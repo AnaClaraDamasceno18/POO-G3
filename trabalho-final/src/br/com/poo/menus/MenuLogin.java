@@ -38,6 +38,7 @@ public class MenuLogin {
 		if(isFuncionario && isCliente) {
 			System.out.println("Usuário é: " + funcionario.getTipoFuncionario() + " e " + cliente.getTipoUsuario());
 			System.out.println("menu perguntando p onde quer ir pros 2");
+			MenuPrincipal(funcionario, conta);
 		}else if(isFuncionario && !isCliente) {
 			System.out.println("Usuário é: " + funcionario.getTipoFuncionario());
 			System.out.println("menu funcionario encontrado");
@@ -65,7 +66,12 @@ public class MenuLogin {
 		// pessoaEncontrada.mostrarMenu(pessoaEncontrada);
 	}
 
+	private void MenuPrincipal(Funcionario funcionario, Conta conta) {
+		// TODO Auto-generated method stub
+		
+	}
+
 //	private void mostrarMenu(Pessoa pessoaEncontrada) {		
 //	}
-//	
+//
 }

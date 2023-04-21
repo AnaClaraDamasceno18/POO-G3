@@ -2,9 +2,13 @@ package br.com.poo.contas;
 
 public class ContaCorrente extends Conta {
 
+	public static int quantidadeSaque = 0;
+	public static int quantidadeDeposito = 0;
+	public static int quantidadeTransferencia = 0;
 
 	public ContaCorrente(String tipoConta, String agencia, String numConta, String titular, String cpf, Double saldo) {
 		super(tipoConta, agencia, numConta, titular, cpf, saldo);
+		
 	}
 
 	@Override
@@ -12,7 +16,8 @@ public class ContaCorrente extends Conta {
 		if (saldo < valor) {
 			return "Saldo Insuficiente";
 		} else {
-			saldo -= valor;
+			saldo -= valor + 0.1;
+			quantidadeSaque++;
 			return "Saque realizado";
 		}
 
@@ -21,8 +26,10 @@ public class ContaCorrente extends Conta {
 	@Override
 	public void depositar(Double valor) {
 		if (valor > 0) {
-			saldo += valor;
+			saldo += valor + 0.1;
+			quantidadeDeposito++;
 			System.out.println("Seu depósito foi realizado!");
+			
 		} else {
 			System.out.println("Não foi possivel realizar");
 		}
@@ -30,18 +37,16 @@ public class ContaCorrente extends Conta {
 
 	@Override
 	public void transferir(Double valor, Conta destino) {
+		sacar(valor + 0.2);
 		if (valor > 0 && saldo >= valor) {
 			destino.depositar(valor);
-
+			quantidadeTransferencia++;
 		}
 
 	}
 
-	public void salario(Double valor) {
-
-		// double salario = 1000.0;
-		// double bonus = salario > 1000 ? 0.10 : 0.15;
-		// System.out.println(bonus);
+	@Override
+	public void salario(Double valor) {		
 	}
 
 }

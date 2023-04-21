@@ -14,20 +14,23 @@ import br.com.poo.contas.ContaPoupanca;
 import br.com.poo.enums.ContaEnum;
 import br.com.poo.enums.PessoaEnum;
 import br.com.poo.pessoa.Cliente;
+import br.com.poo.pessoa.Diretor;
 import br.com.poo.pessoa.Funcionario;
 import br.com.poo.pessoa.Gerente;
+import br.com.poo.pessoa.OperadorCaixa;
+import br.com.poo.pessoa.Presidente;
 
 public class LeituraEscrita {
 
 	static final String PATH_BASICO = ".\\leitura\\";
 	static final String EXTENSAO = ".txt";
-	
+
 	public static void leitor(String path) throws IOException {
 		BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASICO + path));
 		String linha = "";
 		while (true) {
 			linha = buffRead.readLine();
-			
+
 			if (linha != null) {
 				String[] dados = linha.split(";");
 
@@ -41,20 +44,35 @@ public class LeituraEscrita {
 							Double.parseDouble(dados[5]));
 
 					Conta.contas.put(dados[4], cp);
+
 				} else if (dados[0].equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
 					Gerente gerente = new Gerente(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]), dados[4],
 							dados[5]);
 
 					Funcionario.mapaFuncionarios.put(dados[2], gerente);
-				} else if(dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo()) ) {
+
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo())) {
 					Cliente cliente = new Cliente(dados[0], dados[1], dados[2], dados[3], dados[4], dados[5]);
-					
+
 					Cliente.mapaClientes.put(dados[2], cliente);
-				//}else if() {
-//					
-//				} else if() {
-//					
-//				} else if() {
+
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
+					Diretor cliente = new Diretor(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]), dados[4],
+							dados[5]);
+
+					Diretor.mapaFuncionarios.put(dados[2], cliente);
+
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
+					Presidente cliente = new Presidente(dados[0], dados[1], dados[2], Double.parseDouble(dados[3]),
+							dados[4], dados[5]);
+
+					Presidente.mapaFuncionarios.put(dados[2], cliente);
+
+				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CAIXA.getCargo())) {
+					OperadorCaixa cliente = new OperadorCaixa(dados[0], dados[1], dados[2],
+							Double.parseDouble(dados[3]), dados[4], dados[5]);
+
+					OperadorCaixa.mapaFuncionarios.put(dados[2], cliente);
 
 				}
 			} else {
@@ -63,7 +81,7 @@ public class LeituraEscrita {
 		}
 		buffRead.close();
 	}
-	
+
 //	public static void escritor() throws IOException {
 //
 //		Scanner sc = new Scanner(System.in);
@@ -79,13 +97,13 @@ public class LeituraEscrita {
 //		buffWrite.close();
 //		sc.close();
 //	}
-	
-	public static void comprovanteSaque(Conta conta, Double valorSaque) throws IOException {
+
+	public static void comprovanteExtrato(Conta conta, Double valor) throws IOException {
 		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";
 
-		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO));
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
 
-		String linha = "*************** SAQUE **************";
+		String linha = "*************** Extrato **************";
 		buffWrite.append(linha + "\n");
 
 		linha = "Nome: " + conta.getTitular();
@@ -100,7 +118,7 @@ public class LeituraEscrita {
 		linha = "Conta: " + conta.getNumConta();
 		buffWrite.append(linha + "\n");
 
-		linha = "Valor: R$ " + valorSaque;
+		linha = "Valor: R$ " + valor;
 		buffWrite.append(linha + "\n");
 
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -108,13 +126,70 @@ public class LeituraEscrita {
 		linha = "Operação realizada em: " + sdf.format(date);
 		buffWrite.append(linha + "\n");
 
-		linha = "************* FIM SAQUE ************";
+		linha = "************* Extrato ************";
 		buffWrite.append(linha + "\n");
 
 		buffWrite.close();
 	}
-
 	
+	public static void tributacaoSaque(String path) throws IOException {
+		Double totalTribu =  ContaCorrente.quantidadeSaque * 0.1;
+		System.out.println(totalTribu);
+	}
+	
+	public static void tributacaoDeposito(String path) throws IOException {
+		Double totalTribu =  ContaCorrente.quantidadeDeposito * 0.1;
+		System.out.println(totalTribu);
+	}
+	
+	public static void tributacaoTransferencia(String path) throws IOException {
+		Double totalTribu =  ContaCorrente.quantidadeTransferencia * 0.2;
+		System.out.println(totalTribu);
+	}
+	
+	public static void comprovanteExtratoTransferencia(Conta conta, Conta destino, Double valor) throws IOException {
+		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";
 
+		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
+
+		String linha = "*************** Extrato **************";
+		buffWrite.append(linha + "\n");
+
+		linha = "Rementente: " + conta.getTitular();
+		buffWrite.append(linha + "\n");
+
+		linha = "CPF: " + conta.getCpf();
+		buffWrite.append(linha + "\n");
+
+		linha = "Agência: " + conta.getAgencia();
+		buffWrite.append(linha + "\n");
+
+		linha = "Conta: " + conta.getNumConta();
+		buffWrite.append(linha + "\n");
+
+		linha = "Valor: R$ " + valor;
+		buffWrite.append(linha + "\n");
+		
+		linha = "Destinatario: " + destino.getTitular();
+		buffWrite.append(linha + "\n");
+		
+		linha = "CPF: " + destino.getCpf();
+		buffWrite.append(linha + "\n");
+
+		linha = "Agência: " + destino.getAgencia();
+		buffWrite.append(linha + "\n");
+
+		linha = "Conta: " + destino.getNumConta();
+		buffWrite.append(linha + "\n");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		Date date = new Date();
+		linha = "Operação realizada em: " + sdf.format(date);
+		buffWrite.append(linha + "\n");
+
+		linha = "************* Extrato ************";
+		buffWrite.append(linha + "\n");
+
+		buffWrite.close();
+	}
 }
-

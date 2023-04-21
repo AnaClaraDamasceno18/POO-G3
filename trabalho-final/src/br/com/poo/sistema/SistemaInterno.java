@@ -11,10 +11,12 @@ import br.com.poo.menus.MenuLogin;
 import br.com.poo.pessoa.Cliente;
 import br.com.poo.pessoa.Diretor;
 import br.com.poo.pessoa.Funcionario;
+
 import br.com.poo.pessoa.Gerente;
 import br.com.poo.pessoa.OperadorCaixa;
 import br.com.poo.pessoa.Pessoa;
 import br.com.poo.pessoa.Presidente;
+import br.com.poo.views_trabalho_final.ViewLoginFuncionario;
 
 public class SistemaInterno {
 	
