@@ -15,22 +15,6 @@ public class ViewMenuGerente {
 	private JFrame viewMenuGerente;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewMenuGerente window = new ViewMenuGerente();
-					window.viewMenuGerente.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public ViewMenuGerente() {
@@ -76,5 +60,6 @@ public class ViewMenuGerente {
 		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel_1.setBounds(-16, 0, 800, 600);
 		viewMenuGerente.getContentPane().add(lblNewLabel_1);
+		viewMenuGerente.setVisible(true);
 	}
 }

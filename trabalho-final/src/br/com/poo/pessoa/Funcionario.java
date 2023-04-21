@@ -13,7 +13,7 @@ public abstract class Funcionario extends Pessoa implements Comparator<Object> {
 	private String tipoFuncionario;
 	private String nome;
 	private String cpf;
-	private Double salario;
+	private static Double salario;
 	private String senha;
 
 	public Funcionario() {
@@ -25,7 +25,7 @@ public abstract class Funcionario extends Pessoa implements Comparator<Object> {
 		this.tipoFuncionario = tipoFuncionario;
 		this.nome = nome;
 		this.cpf = cpf;
-		this.salario = salario;
+		this.setSalario(salario);
 		this.senha = senha;
 	}
 
@@ -53,6 +53,19 @@ public abstract class Funcionario extends Pessoa implements Comparator<Object> {
 	public void setTipoFuncionario(String tipoFuncionario) {
 		this.tipoFuncionario = tipoFuncionario;
 	}
+
+	public static Double getSalario() {
+		return salario;
+	}
+
+	public static void setSalario(Double salario) {
+		Funcionario.salario = salario;
+	}
+	
+	public double SalarioComBonificacao() {
+        return salario *1.1;
+
+    }
 
 	
 }

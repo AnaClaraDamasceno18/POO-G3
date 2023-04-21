@@ -18,10 +18,6 @@ public class MenuLogin {
 	boolean isCliente;
 
 	public void login() throws IOException {
-		System.out.println("Digite seu CPF: ");
-		cpf = sc.nextLine();
-		System.out.println("Digite sua Senha: ");
-		senha = sc.nextLine();
 
 		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
 		Cliente cliente = Cliente.mapaClientes.get(cpf);

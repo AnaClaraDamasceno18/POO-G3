@@ -16,22 +16,6 @@ public class ViewMenuDiretor {
 	private JFrame frmMenuDoDiretor;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewMenuDiretor window = new ViewMenuDiretor();
-					window.frmMenuDoDiretor.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public ViewMenuDiretor() {
@@ -83,6 +67,11 @@ public class ViewMenuDiretor {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel.setBounds(-16, 0, 800, 600);
 		frmMenuDoDiretor.getContentPane().add(lblNewLabel);
+		frmMenuDoDiretor.setVisible(true);
+	}
+
+	public void setVisible(boolean b) {
+		
 	}
 
 }

@@ -28,5 +28,8 @@ public class SistemaInterno {
 		
 		MenuLogin login = new MenuLogin();
 		login.login();
+		
+		LeituraEscrita.bonificacao("bonificacao.txt");
+
 		}
 }

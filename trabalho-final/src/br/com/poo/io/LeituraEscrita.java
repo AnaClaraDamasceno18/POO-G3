@@ -68,12 +68,6 @@ public class LeituraEscrita {
 
 					Presidente.mapaFuncionarios.put(dados[2], cliente);
 
-				} else if (dados[0].equalsIgnoreCase(PessoaEnum.CAIXA.getCargo())) {
-					OperadorCaixa cliente = new OperadorCaixa(dados[0], dados[1], dados[2],
-							Double.parseDouble(dados[3]), dados[4], dados[5]);
-
-					OperadorCaixa.mapaFuncionarios.put(dados[2], cliente);
-
 				}
 			} else {
 				break;
@@ -146,6 +140,11 @@ public class LeituraEscrita {
 		Double totalTribu =  ContaCorrente.quantidadeTransferencia * 0.2;
 		System.out.println(totalTribu);
 	}
+	
+	public static void bonificacao(String path) throws IOException{
+        Double totalBonificacao = Funcionario.getSalario() * 1.1;
+        System.out.println(totalBonificacao);
+    }
 	
 	public static void comprovanteExtratoTransferencia(Conta conta, Conta destino, Double valor) throws IOException {
 		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";

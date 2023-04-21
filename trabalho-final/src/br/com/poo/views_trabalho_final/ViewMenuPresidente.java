@@ -17,22 +17,6 @@ public class ViewMenuPresidente {
 	private JFrame frmcapybankMenu;
 
 	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewMenuPresidente window = new ViewMenuPresidente();
-					window.frmcapybankMenu.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
 	 * Create the application.
 	 */
 	public ViewMenuPresidente() {
@@ -100,6 +84,7 @@ public class ViewMenuPresidente {
 		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel.setBounds(-16, 0, 800, 600);
 		frmcapybankMenu.getContentPane().add(lblNewLabel);
+		frmcapybankMenu.setVisible(true);
 	}
 
 }
