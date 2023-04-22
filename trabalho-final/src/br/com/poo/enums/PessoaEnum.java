@@ -21,5 +21,4 @@ public enum PessoaEnum {
 	public int getId() {
 		return id;
 	}
-
 }

@@ -33,6 +33,7 @@ public class ViewLoginFuncionario {
 	public ViewMenuDiretor menuDiretor;
 	public ViewMenuPresidente menuPresidente;
 	public ViewEscolhaLogin loginDuplo;
+	public ViewMenuCliente menuCliente;
 	public static boolean isFuncionario = false;
 	public static boolean isCliente = false;
 
@@ -172,7 +173,6 @@ public class ViewLoginFuncionario {
 			loginDuplo.setCpf(cpf);
 
 		} else if (isFuncionario && !isCliente) {
-			System.out.println(funcionario.getTipoFuncionario());
 			if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
 				menuGerente = new ViewMenuGerente();
 			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
@@ -182,8 +182,9 @@ public class ViewLoginFuncionario {
 			}
 
 		} else if (!isFuncionario && isCliente) {
-			System.out.println("Usuário é: " + cliente.getTipoUsuario());
-			System.out.println("menu cliente");
+			if (cliente.getTipoUsuario().equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo())) {
+				menuCliente = new ViewMenuCliente(cpf);
+			}
 		}
 
 		while ((funcionario != null && !(funcionario.getSenha().equals(senha)))
@@ -202,5 +203,5 @@ public class ViewLoginFuncionario {
 	public static boolean isCliente() {
 		return isCliente;
 	}
-	
+
 }

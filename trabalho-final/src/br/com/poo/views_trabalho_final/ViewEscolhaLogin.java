@@ -8,6 +8,7 @@ import javax.swing.JTextPane;
 
 import br.com.poo.enums.PessoaEnum;
 import br.com.poo.io.LeituraEscrita;
+import br.com.poo.pessoa.Cliente;
 import br.com.poo.pessoa.Diretor;
 import br.com.poo.pessoa.Funcionario;
 import br.com.poo.pessoa.Gerente;
@@ -28,7 +29,9 @@ public class ViewEscolhaLogin {
 	public ViewMenuDiretor menuDiretor;
 	public ViewMenuPresidente menuPresidente;
 	public ViewLoginFuncionario login;
+	public ViewMenuCliente menuCliente;
 	private String cpf;
+	private String titular;
 	private JFrame ViewEscolhaLogin;
 
 	public ViewEscolhaLogin() {
@@ -52,16 +55,14 @@ public class ViewEscolhaLogin {
 		btnLogFuncEscolheCliente.setBounds(132, 442, 202, 60);
 		btnLogFuncEscolheCliente.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				
-				
+
+				indentificaCliente(getCpf());
+
 			}
-			
+
 		});
-		
-		
+
 		ViewEscolhaLogin.add(btnLogFuncEscolheCliente);
 
 		JButton btnLogFuncEscolheFunc = new JButton("Funcionário");
@@ -69,7 +70,6 @@ public class ViewEscolhaLogin {
 		btnLogFuncEscolheFunc.setBounds(435, 442, 202, 60);
 		btnLogFuncEscolheFunc.addActionListener(new ActionListener() {
 
-			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				escolhaFuncionario(getCpf());
@@ -85,15 +85,14 @@ public class ViewEscolhaLogin {
 		ViewEscolhaLogin.add(lblNewLabel_1);
 
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon(
-				"C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyG.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyG.png"));
 		lblNewLabel.setBounds(0, 0, 800, 600);
 		ViewEscolhaLogin.add(lblNewLabel);
 		ViewEscolhaLogin.setVisible(true);
 	}
 
 	public void escolhaFuncionario(String cpf) {
-		
+
 		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
 		if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
 			menuGerente = new ViewMenuGerente();
@@ -102,7 +101,15 @@ public class ViewEscolhaLogin {
 		} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
 			menuPresidente = new ViewMenuPresidente();
 		}
-		
+
+	}
+
+	public void indentificaCliente(String cpf) {
+		Cliente cliente = Cliente.mapaClientes.get(cpf);
+		if (cliente.getTipoUsuario().equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo())) {
+			menuCliente = new ViewMenuCliente(cpf);
+		}
+
 	}
 
 	public String getCpf() {
@@ -112,7 +119,13 @@ public class ViewEscolhaLogin {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	
-	
+
+	public String getTitular() {
+		return titular;
+	}
+
+	public void setTitular(String titular) {
+		this.titular = titular;
+	}
 
 }
