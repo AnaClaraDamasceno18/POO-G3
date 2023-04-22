@@ -69,7 +69,7 @@ public class ViewMenuPresidente {
 		frmcapybankMenu.getContentPane().add(btnSairRelatPresid);
 		
 		JButton btnGerarSaldoTotal = new JButton("Gerar saldo total em CapyCoins");
-		btnGerarSaldoTotal.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\CapyCoinsR_SF.png"));
+		btnGerarSaldoTotal.setIcon(new ImageIcon("C:\\TrabalhoPOO\\telas_trabalho_final\\images\\CapyCoinsR_SF.png"));
 		btnGerarSaldoTotal.setForeground(new Color(160, 82, 45));
 		btnGerarSaldoTotal.setBackground(new Color(255, 215, 0));
 		btnGerarSaldoTotal.addActionListener(new ActionListener() {
@@ -81,7 +81,7 @@ public class ViewMenuPresidente {
 		frmcapybankMenu.getContentPane().add(btnGerarSaldoTotal);
 		
 		JLabel lblNewLabel = new JLabel("*CapyBank* - Menu de Presidente");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel.setBounds(-16, 0, 800, 600);
 		frmcapybankMenu.getContentPane().add(lblNewLabel);
 		frmcapybankMenu.setVisible(true);

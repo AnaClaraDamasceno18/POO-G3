@@ -125,27 +125,27 @@ public class LeituraEscrita {
 
 		buffWrite.close();
 	}
-	
+
 	public static void tributacaoSaque(String path) throws IOException {
-		Double totalTribu =  ContaCorrente.quantidadeSaque * 0.1;
+		Double totalTribu = ContaCorrente.quantidadeSaque * 0.1;
 		System.out.println(totalTribu);
 	}
-	
+
 	public static void tributacaoDeposito(String path) throws IOException {
-		Double totalTribu =  ContaCorrente.quantidadeDeposito * 0.1;
+		Double totalTribu = ContaCorrente.quantidadeDeposito * 0.1;
 		System.out.println(totalTribu);
 	}
-	
+
 	public static void tributacaoTransferencia(String path) throws IOException {
-		Double totalTribu =  ContaCorrente.quantidadeTransferencia * 0.2;
+		Double totalTribu = ContaCorrente.quantidadeTransferencia * 0.2;
 		System.out.println(totalTribu);
 	}
-	
-	public static void bonificacao(String path) throws IOException{
-        Double totalBonificacao = Funcionario.getSalario() * 1.1;
-        System.out.println(totalBonificacao);
-    }
-	
+
+	public static void bonificacao(String path) throws IOException {
+		Double totalBonificacao = Funcionario.getSalario() * 1.1;
+		System.out.println(totalBonificacao);
+	}
+
 	public static void comprovanteExtratoTransferencia(Conta conta, Conta destino, Double valor) throws IOException {
 		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";
 
@@ -168,10 +168,10 @@ public class LeituraEscrita {
 
 		linha = "Valor: R$ " + valor;
 		buffWrite.append(linha + "\n");
-		
+
 		linha = "Destinatario: " + destino.getTitular();
 		buffWrite.append(linha + "\n");
-		
+
 		linha = "CPF: " + destino.getCpf();
 		buffWrite.append(linha + "\n");
 
@@ -180,7 +180,7 @@ public class LeituraEscrita {
 
 		linha = "Conta: " + destino.getNumConta();
 		buffWrite.append(linha + "\n");
-		
+
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Date date = new Date();
 		linha = "Operação realizada em: " + sdf.format(date);

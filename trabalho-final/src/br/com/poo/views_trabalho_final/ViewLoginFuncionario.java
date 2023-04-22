@@ -32,12 +32,14 @@ public class ViewLoginFuncionario {
 	public ViewMenuGerente menuGerente;
 	public ViewMenuDiretor menuDiretor;
 	public ViewMenuPresidente menuPresidente;
+	public ViewEscolhaLogin loginDuplo;
 	public static boolean isFuncionario = false;
 	public static boolean isCliente = false;
-	
+
 	/**
 	 * Launch the application.
 	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -147,7 +149,7 @@ public class ViewLoginFuncionario {
 	public void setTextSenhaFunc(JPasswordField textSenhaFunc) {
 		this.textSenhaFunc = textSenhaFunc;
 	}
-	
+
 	public void verificaLogin() {
 
 		String cpf = txtLoginFunc.getText();
@@ -166,19 +168,18 @@ public class ViewLoginFuncionario {
 		}
 
 		if (isFuncionario && isCliente) {
-			System.out.println("Usuário é: " + funcionario.getTipoFuncionario() + " e " + cliente.getTipoUsuario());
-			System.out.println("menu perguntando p onde quer ir pros 2");
+			loginDuplo = new ViewEscolhaLogin();
+			loginDuplo.setCpf(cpf);
 
 		} else if (isFuncionario && !isCliente) {
 			System.out.println(funcionario.getTipoFuncionario());
-			if(funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
+			if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
 				menuGerente = new ViewMenuGerente();
-			}else if(funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
+			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
 				menuDiretor = new ViewMenuDiretor();
-			}else if(funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
+			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
 				menuPresidente = new ViewMenuPresidente();
 			}
-			
 
 		} else if (!isFuncionario && isCliente) {
 			System.out.println("Usuário é: " + cliente.getTipoUsuario());
