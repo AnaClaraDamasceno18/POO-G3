@@ -5,6 +5,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
+
+import br.com.poo.contas.Conta;
+
 import java.awt.Font;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -15,11 +18,14 @@ import javax.swing.ImageIcon;
 public class ViewMenuPresidente {
 
 	private JFrame frmcapybankMenu;
+	private String cpf;
 
 	/**
 	 * Create the application.
+	 * @param cpf 
 	 */
-	public ViewMenuPresidente() {
+	public ViewMenuPresidente(String cpf) {
+		this.cpf = cpf;
 		initialize();
 	}
 
@@ -27,6 +33,8 @@ public class ViewMenuPresidente {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Conta conta = Conta.contas.get(cpf);
+		
 		frmcapybankMenu = new JFrame();
 		frmcapybankMenu.setTitle("*CapyBank* - Menu do presidente");
 		frmcapybankMenu.setBounds(100, 100, 800, 600);
@@ -41,6 +49,7 @@ public class ViewMenuPresidente {
 		JFormattedTextField mostarNomePresid = new JFormattedTextField();
 		mostarNomePresid.setEnabled(false);
 		mostarNomePresid.setBounds(79, 18, 257, 25);
+		mostarNomePresid.setText(conta.getTitular());
 		frmcapybankMenu.getContentPane().add(mostarNomePresid);
 		
 		JLabel lblPresidente = new JLabel("Presidente:");
@@ -85,6 +94,10 @@ public class ViewMenuPresidente {
 		lblNewLabel.setBounds(-16, 0, 800, 600);
 		frmcapybankMenu.getContentPane().add(lblNewLabel);
 		frmcapybankMenu.setVisible(true);
+	}
+
+	public String getCpf() {
+		return cpf;
 	}
 
 }

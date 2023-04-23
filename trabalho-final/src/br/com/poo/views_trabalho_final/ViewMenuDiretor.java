@@ -4,6 +4,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
+import br.com.poo.contas.Conta;
+
 import java.awt.Font;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
@@ -14,11 +17,14 @@ import javax.swing.ImageIcon;
 public class ViewMenuDiretor {
 
 	private JFrame frmMenuDoDiretor;
+	private String cpf;
 
 	/**
 	 * Create the application.
+	 * @param cpf 
 	 */
-	public ViewMenuDiretor() {
+	public ViewMenuDiretor(String cpf) {
+		this.cpf = cpf;
 		initialize();
 	}
 
@@ -26,6 +32,8 @@ public class ViewMenuDiretor {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Conta conta = Conta.contas.get(cpf);
+
 		frmMenuDoDiretor = new JFrame();
 		frmMenuDoDiretor.setTitle("*CapyBank* - Menu do diretor");
 		frmMenuDoDiretor.setBounds(100, 100, 800, 600);
@@ -40,6 +48,7 @@ public class ViewMenuDiretor {
 		JFormattedTextField mostarNomeDiretor = new JFormattedTextField();
 		mostarNomeDiretor.setEnabled(false);
 		mostarNomeDiretor.setBounds(79, 32, 257, 25);
+		mostarNomeDiretor.setText(conta.getTitular());
 		frmMenuDoDiretor.getContentPane().add(mostarNomeDiretor);
 
 		JFormattedTextField mostarRelatDiretor = new JFormattedTextField();
@@ -72,6 +81,10 @@ public class ViewMenuDiretor {
 
 	public void setVisible(boolean b) {
 
+	}
+
+	public String getCpf() {
+		return cpf;
 	}
 
 }

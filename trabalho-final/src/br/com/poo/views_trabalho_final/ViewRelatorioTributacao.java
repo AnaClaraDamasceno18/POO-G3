@@ -12,28 +12,11 @@ import java.awt.Font;
 
 public class ViewRelatorioTributacao {
 
+	private String cpf;
 	private JFrame viewRelattrib;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewRelatorioTributacao window = new ViewRelatorioTributacao();
-					window.viewRelattrib.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public ViewRelatorioTributacao() {
+	public ViewRelatorioTributacao(String cpf) {
+		this.cpf = cpf;
 		initialize();
 	}
 
@@ -62,8 +45,13 @@ public class ViewRelatorioTributacao {
 		viewRelattrib.getContentPane().add(btnVoltarRt);
 		
 		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
+		lblNewLabel.setIcon(new ImageIcon("C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel.setBounds(-14, 0, 798, 613);
 		viewRelattrib.getContentPane().add(lblNewLabel);
+		viewRelattrib.setVisible(true);
+	}
+
+	public String getCpf() {
+		return cpf;
 	}
 }

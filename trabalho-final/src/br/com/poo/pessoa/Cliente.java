@@ -15,11 +15,6 @@ public class Cliente extends Pessoa {
 		mapaClientes.put(cpf, this);
 	}
 
-	@Override
-	public void mostrarMenu(Pessoa pessoaEncontrada) {
-		System.out.println("mostrar menu Cliente");
-	}
-
 	public static Map<String, Cliente> getMapaCliente() {
 		return mapaClientes;
 	}

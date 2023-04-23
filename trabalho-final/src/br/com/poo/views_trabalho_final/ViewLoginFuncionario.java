@@ -7,6 +7,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import br.com.poo.contas.Conta;
+import br.com.poo.contas.ContaCorrente;
+import br.com.poo.enums.ContaEnum;
 import br.com.poo.enums.PessoaEnum;
 import br.com.poo.io.LeituraEscrita;
 import br.com.poo.menus.MenuLogin;
@@ -33,7 +35,9 @@ public class ViewLoginFuncionario {
 	public ViewMenuDiretor menuDiretor;
 	public ViewMenuPresidente menuPresidente;
 	public ViewEscolhaLogin loginDuplo;
-	public ViewMenuCliente menuCliente;
+	public ViewMenuClienteContaCorrente menuCorrente;
+	public ViewMenuClienteContaPoupanca menuPoupanca;
+	public ViewContaDupla contaDupla;
 	public static boolean isFuncionario = false;
 	public static boolean isCliente = false;
 
@@ -158,8 +162,13 @@ public class ViewLoginFuncionario {
 
 		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
 		Cliente cliente = Cliente.mapaClientes.get(cpf);
-		Conta conta = Conta.contas.get(cpf);
+		Conta cc = Conta.contas.get(cpf);
+		Conta cp = Conta.contas.get(cpf);
+//		boolean corrente = conta.getTipoConta().equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta());
+//		boolean poupanca = conta.getTipoConta().equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta());
 
+//		conta.getNumConta().equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta());
+		
 		if (funcionario != null) {
 			isFuncionario = true;
 		}
@@ -172,28 +181,44 @@ public class ViewLoginFuncionario {
 			loginDuplo = new ViewEscolhaLogin();
 			loginDuplo.setCpf(cpf);
 
-		} else if (isFuncionario && !isCliente) {
+		} else if (isFuncionario) {
 			if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
-				menuGerente = new ViewMenuGerente();
+				menuGerente = new ViewMenuGerente(cpf);
 			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
-				menuDiretor = new ViewMenuDiretor();
+				menuDiretor = new ViewMenuDiretor(cpf);
 			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
-				menuPresidente = new ViewMenuPresidente();
+				menuPresidente = new ViewMenuPresidente(cpf);
 			}
 
-		} else if (!isFuncionario && isCliente) {
-			if (cliente.getTipoUsuario().equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo())) {
-				menuCliente = new ViewMenuCliente(cpf);
+		} else if (isCliente) {
+			
+			cliente.getTipoUsuario().equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo());
+			
+			if (cc != null) {
+				if(cc.getTipoConta().equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta())) {
+					menuCorrente = new ViewMenuClienteContaCorrente(cpf);
+					System.out.println("corrente");	
+				} else if (cc.getTipoConta().equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
+					menuPoupanca = new ViewMenuClienteContaPoupanca(cpf);
+					System.out.println("poupança");
+				} else {
+					contaDupla = new ViewContaDupla(cpf);
+				}
+				
+			}
+			
+			else {
+				System.out.println("n foi");
 			}
 		}
 
-		while ((funcionario != null && !(funcionario.getSenha().equals(senha)))
-				|| (cliente != null && !(cliente.getSenha().equals(senha)))) {
-			System.out.println("CPF e/ou Senha incorreto(s).");
-
-			funcionario = Funcionario.mapaFuncionarios.get(cpf);
-			conta = Conta.contas.get(cpf);
-		}
+//		while ((funcionario != null && !(funcionario.getSenha().equals(senha)))
+//				|| (cliente != null && !(cliente.getSenha().equals(senha)))) {
+//			System.out.println("CPF e/ou Senha incorreto(s).");
+//
+//			funcionario = Funcionario.mapaFuncionarios.get(cpf);
+//			conta = Conta.contas.get(cpf);
+//		}
 	}
 
 	public static boolean isFuncionario() {

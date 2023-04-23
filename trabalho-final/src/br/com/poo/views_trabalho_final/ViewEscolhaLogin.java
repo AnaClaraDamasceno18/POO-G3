@@ -29,7 +29,7 @@ public class ViewEscolhaLogin {
 	public ViewMenuDiretor menuDiretor;
 	public ViewMenuPresidente menuPresidente;
 	public ViewLoginFuncionario login;
-	public ViewMenuCliente menuCliente;
+	public ViewMenuClienteContaCorrente menuCliente;
 	private String cpf;
 	private String titular;
 	private JFrame ViewEscolhaLogin;
@@ -95,11 +95,11 @@ public class ViewEscolhaLogin {
 
 		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
 		if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
-			menuGerente = new ViewMenuGerente();
+			menuGerente = new ViewMenuGerente(cpf);
 		} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
-			menuDiretor = new ViewMenuDiretor();
+			menuDiretor = new ViewMenuDiretor(cpf);
 		} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
-			menuPresidente = new ViewMenuPresidente();
+			menuPresidente = new ViewMenuPresidente(cpf);
 		}
 
 	}
@@ -107,7 +107,7 @@ public class ViewEscolhaLogin {
 	public void indentificaCliente(String cpf) {
 		Cliente cliente = Cliente.mapaClientes.get(cpf);
 		if (cliente.getTipoUsuario().equalsIgnoreCase(PessoaEnum.CLIENTE.getCargo())) {
-			menuCliente = new ViewMenuCliente(cpf);
+			menuCliente = new ViewMenuClienteContaCorrente(cpf);
 		}
 
 	}

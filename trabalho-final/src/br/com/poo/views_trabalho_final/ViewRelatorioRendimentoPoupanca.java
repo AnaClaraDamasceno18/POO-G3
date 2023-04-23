@@ -16,32 +16,11 @@ public class ViewRelatorioRendimentoPoupanca {
 	private JTextField txtValorPoup;
 	private JTextField txtDiasValorPoup;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					ViewRelatorioRendimentoPoupanca window = new ViewRelatorioRendimentoPoupanca();
-					window.viewRendPoup.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
 
-	/**
-	 * Create the application.
-	 */
 	public ViewRelatorioRendimentoPoupanca() {
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
 	private void initialize() {
 		viewRendPoup = new JFrame();
 		viewRendPoup.getContentPane().setBackground(new Color(255, 255, 255));
@@ -68,11 +47,13 @@ public class ViewRelatorioRendimentoPoupanca {
 		txtDiasValorPoup = new JTextField();
 		txtDiasValorPoup.setColumns(10);
 		txtDiasValorPoup.setBounds(456, 168, 214, 30);
+		
 		viewRendPoup.getContentPane().add(txtDiasValorPoup);
 		
 		JButton btnSimulValorPoup = new JButton("Simular");
 		btnSimulValorPoup.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnSimulValorPoup.setBounds(139, 280, 229, 52);
+		
 		viewRendPoup.getContentPane().add(btnSimulValorPoup);
 		
 		JButton btnAplicarValorPoup = new JButton("Aplicar");
@@ -86,8 +67,9 @@ public class ViewRelatorioRendimentoPoupanca {
 		viewRendPoup.getContentPane().add(btnVoltarRendPolp);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
-		lblNewLabel_1.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
+		lblNewLabel_1.setIcon(new ImageIcon("C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel_1.setBounds(-16, 0, 800, 600);
 		viewRendPoup.getContentPane().add(lblNewLabel_1);
+		viewRendPoup.setVisible(true);
 	}
 }

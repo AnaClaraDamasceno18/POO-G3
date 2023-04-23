@@ -11,12 +11,6 @@ public class Presidente extends Funcionario {
 	}
 
 	@Override
-	public void mostrarMenu(Pessoa pessoaEncontrada) {
-		System.out.println("mostrar menu Presidente");
-		
-	}
-
-	@Override
 	public int compare(Object o1, Object o2) {
 		return 0;
 	}

@@ -14,16 +14,22 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-public class ViewTransi extends JFrame {
+import br.com.poo.contas.Conta;
+
+public class ViewTransiPoupanca extends JFrame {
 
 	private JFrame ViewSaque;
 	private JTextField textValorSaque;
+	private String cpf;
 
-	public ViewTransi() {
+	public ViewTransiPoupanca(String cpf) {
+		this.cpf = cpf;
 		initialize();
 	}
 
 	public void initialize() {
+		Conta conta = Conta.contas.get(cpf);
+		
 		ViewSaque = new JFrame();
 		ViewSaque.setName("*CapyBank* - Saque");
 		ViewSaque.setBounds(100, 100, 800, 600);
@@ -43,11 +49,13 @@ public class ViewTransi extends JFrame {
 		JFormattedTextField mostarSaldoCliente = new JFormattedTextField();
 		mostarSaldoCliente.setEnabled(false);
 		mostarSaldoCliente.setBounds(66, 37, 257, 25);
+		mostarSaldoCliente.setText(conta.getSaldo().toString());
 		ViewSaque.add(mostarSaldoCliente);
 		
 		JFormattedTextField mostarNomeCliente = new JFormattedTextField();
 		mostarNomeCliente.setEnabled(false);
 		mostarNomeCliente.setBounds(66, 11, 257, 25);
+		mostarNomeCliente.setText(conta.getTitular());
 		ViewSaque.add(mostarNomeCliente);
 		
 		textValorSaque = new JFormattedTextField();
@@ -60,14 +68,6 @@ public class ViewTransi extends JFrame {
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel_1.setBounds(248, 166, 46, 14);
 		ViewSaque.add(lblNewLabel_1);
-		
-		Panel panel = new Panel();
-		panel.setBounds(304, 192, 183, 33);
-		ViewSaque.add(panel);
-		
-		Label label = new Label("Taxa de saque: 20%");
-		label.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
-		panel.add(label);
 		
 		Button btn1Saque = new Button("1");
 		btn1Saque.setBackground(new Color(169, 169, 169));
@@ -181,7 +181,7 @@ public class ViewTransi extends JFrame {
 		ViewSaque.add(btnConfirmSaque_1);
 		
 		JLabel lblNewLabel_2 = new JLabel("New label");
-		lblNewLabel_2.setIcon(new ImageIcon("C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
+		lblNewLabel_2.setIcon(new ImageIcon("C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel_2.setBounds(-16, 0, 800, 600);
 		ViewSaque.add(lblNewLabel_2);
 		
@@ -298,5 +298,9 @@ public class ViewTransi extends JFrame {
 		//textValorSaque.setText(textValorSaque.getText() + "cancelar");
 		dispose();
 			
+	}
+
+	public String getCpf() {
+		return cpf;
 	}
 }

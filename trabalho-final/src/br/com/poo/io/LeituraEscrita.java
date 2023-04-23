@@ -17,7 +17,6 @@ import br.com.poo.pessoa.Cliente;
 import br.com.poo.pessoa.Diretor;
 import br.com.poo.pessoa.Funcionario;
 import br.com.poo.pessoa.Gerente;
-import br.com.poo.pessoa.OperadorCaixa;
 import br.com.poo.pessoa.Presidente;
 
 public class LeituraEscrita {
@@ -39,6 +38,7 @@ public class LeituraEscrita {
 							Double.parseDouble(dados[5]));
 
 					Conta.contas.put(dados[4], cc);
+					
 				} else if (dados[0].equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta())) {
 					ContaPoupanca cp = new ContaPoupanca(dados[0], dados[1], dados[2], dados[3], dados[4],
 							Double.parseDouble(dados[5]));
@@ -93,7 +93,7 @@ public class LeituraEscrita {
 //	}
 
 	public static void comprovanteExtrato(Conta conta, Double valor) throws IOException {
-		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";
+		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_extrato";
 
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
 
@@ -126,28 +126,49 @@ public class LeituraEscrita {
 		buffWrite.close();
 	}
 
-	public static void tributacaoSaque(String path) throws IOException {
-		Double totalTribu = ContaCorrente.quantidadeSaque * 0.1;
-		System.out.println(totalTribu);
+	public static void tributacao(Conta conta, Double valor) throws IOException {
+		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_tributação";
+		
+		BufferedWriter buffWriteT = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
+		
+		String linha = "*************** TRIBUTAÇÃO **************";
+		buffWriteT.append(linha + "\n");
+		
+		Double totalTribuS = ContaCorrente.quantidadeSaque * 0.1;
+		linha = "Total: " + totalTribuS;
+		buffWriteT.append(linha + "\n");
+		
+		Double totalTribuD = ContaCorrente.quantidadeDeposito * 0.1;
+		linha = "Total: " + totalTribuD;
+		buffWriteT.append(linha + "\n");
+		
+		Double totalTribuT = ContaCorrente.quantidadeTransferencia * 0.2;
+		linha = "Total: " + totalTribuT;
+		buffWriteT.append(linha + "\n");
+		
+		linha = "*************** TRIBUTAÇÃO **************";
+		buffWriteT.append(linha + "\n");
 	}
 
-	public static void tributacaoDeposito(String path) throws IOException {
-		Double totalTribu = ContaCorrente.quantidadeDeposito * 0.1;
-		System.out.println(totalTribu);
-	}
-
-	public static void tributacaoTransferencia(String path) throws IOException {
-		Double totalTribu = ContaCorrente.quantidadeTransferencia * 0.2;
-		System.out.println(totalTribu);
-	}
-
-	public static void bonificacao(String path) throws IOException {
+	public static void bonificacao(Funcionario func, Double valor) throws IOException {
+		String nomeArquivo = func.getNome() + "_" + func.getTipoFuncionario() + "_bonificação";
+		
+		BufferedWriter buffWriteB = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
+		
+		String linha = "*************** BONIFICAÇÃO **************";
+		buffWriteB.append(linha + "\n");
+		
 		Double totalBonificacao = Funcionario.getSalario() * 1.1;
-		System.out.println(totalBonificacao);
+		linha = "Salário atual: " + Funcionario.getSalario();
+		buffWriteB.append(linha + "\n");
+		
+		linha = "Sua bonificação é de: " + totalBonificacao;
+		buffWriteB.append(linha + "\n");
+		linha = "*************** BONIFICAÇÃO **************";
 	}
 
 	public static void comprovanteExtratoTransferencia(Conta conta, Conta destino, Double valor) throws IOException {
-		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_saque";
+		String nomeArquivo = conta.getCpf() + "_" + conta.getAgencia() + "_extrato_transferencia";
 
 		BufferedWriter buffWrite = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
 
@@ -190,5 +211,20 @@ public class LeituraEscrita {
 		buffWrite.append(linha + "\n");
 
 		buffWrite.close();
+	}
+	
+	public static void relatorioGerente(Funcionario func) throws IOException {
+		String nomeArquivo = func.getNome() + "_" + func.getTipoFuncionario() + "_relatório";
+		
+		BufferedWriter buffWriteG = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
+		
+		String linha = "*************** BONIFICAÇÃO **************";
+		buffWriteG.append(linha + "\n");
+		
+		int totalContas = Gerente.quantidadeContas;
+		linha = "Total: " + totalContas;
+		buffWriteG.append(linha + "\n");
+		
+		
 	}
 }

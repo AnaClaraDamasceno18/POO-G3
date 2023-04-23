@@ -7,7 +7,7 @@ import br.com.poo.pessoa.Cliente;
 
 public abstract class Conta {
 
-	protected String agencia;
+	protected static String agencia;
 	private String numConta;
 	protected Double saldo = 0.0;
 	private String tipoConta;
@@ -37,7 +37,7 @@ public abstract class Conta {
 
 	public abstract void salario(Double valor);
 
-	public String getAgencia() {
+	public static String getAgencia() {
 		return agencia;
 	}
 

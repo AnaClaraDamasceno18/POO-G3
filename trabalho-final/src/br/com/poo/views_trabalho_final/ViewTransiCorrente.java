@@ -16,14 +16,13 @@ import javax.swing.JTextField;
 
 import br.com.poo.contas.Conta;
 
-public class ViewMovimentaCorrente extends JFrame {
+public class ViewTransiCorrente extends JFrame {
 
-	
 	private JFrame ViewSaque;
 	private JTextField textValorSaque;
 	private String cpf;
 
-	public ViewMovimentaCorrente(String cpf) {
+	public ViewTransiCorrente(String cpf) {
 		this.cpf = cpf;
 		initialize();
 	}
@@ -32,7 +31,7 @@ public class ViewMovimentaCorrente extends JFrame {
 		Conta conta = Conta.contas.get(cpf);
 		
 		ViewSaque = new JFrame();
-		ViewSaque.setName("*CapyBank* - corrente");
+		ViewSaque.setName("*CapyBank* - Saque");
 		ViewSaque.setBounds(100, 100, 800, 600);
 		ViewSaque.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ViewSaque.setLayout(null);
@@ -74,7 +73,7 @@ public class ViewMovimentaCorrente extends JFrame {
 		panel.setBounds(304, 192, 183, 33);
 		ViewSaque.add(panel);
 		
-		Label label = new Label("Taxa de saque: R$0.10");
+		Label label = new Label("Taxa de transferencia: R$0.20");
 		label.setFont(new Font("Dialog", Font.BOLD | Font.ITALIC, 12));
 		panel.add(label);
 		
@@ -312,6 +311,4 @@ public class ViewMovimentaCorrente extends JFrame {
 	public String getCpf() {
 		return cpf;
 	}
-	
-	
 }

@@ -42,8 +42,6 @@ public abstract class Pessoa {
 		this.tipoPessoa = tipoPessoa;
 	}
 
-	public abstract void mostrarMenu(Pessoa pessoaEncontrada);
-
 	@Override
 	public String toString() {
 		return "Nome: " + this.nome + "\nCPF: " + this.cpf + "\nSenha: " + this.senha + "\nTipoPessoa: "

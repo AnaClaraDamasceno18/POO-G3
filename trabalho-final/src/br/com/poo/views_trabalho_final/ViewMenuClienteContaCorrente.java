@@ -20,18 +20,17 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
-public class ViewMenuCliente extends JFrame {
+public class ViewMenuClienteContaCorrente extends JFrame {
 
 	private String cpf;
 	private JFrame ViewMenuCliente;
 	private ViewMovimentaCorrente saque;
 	private ViewMovimentaCorrente deposito;
-	private ViewMovimentaPoupanca poupanca;
-	private ViewTransi transi;
-	private ViewMenuCliente menuCliente;
+	private ViewTransiCorrente transi;
+	private ViewMenuClienteContaCorrente menuCliente;
 	private JLabel lblCliente;
 
-	public ViewMenuCliente(String cpf) {
+	public ViewMenuClienteContaCorrente(String cpf) {
 		this.cpf = cpf;
 		initialize();
 	}
@@ -39,8 +38,8 @@ public class ViewMenuCliente extends JFrame {
 	public void initialize() {
 		Conta conta = Conta.contas.get(cpf);
 
-		ViewMenuCliente = new JFrame();
-		ViewMenuCliente.setName("*CapyBank* - Menu Cliente");
+		ViewMenuCliente = new JFrame("*CapyBank* - Conta Corrente");
+		ViewMenuCliente.setName("*CapyBank* - Menu Cliente Conta Corrente");
 		ViewMenuCliente.setBounds(100, 100, 800, 600);
 		ViewMenuCliente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		ViewMenuCliente.setLayout(null);
@@ -73,7 +72,7 @@ public class ViewMenuCliente extends JFrame {
 		btnSaqueCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				saque = new ViewMovimentaCorrente();
+				saque = new ViewMovimentaCorrente(getCpf());
 				
 			}
 		});
@@ -85,7 +84,7 @@ public class ViewMenuCliente extends JFrame {
 		btnDepositCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				deposito = new ViewMovimentaCorrente();
+				deposito = new ViewMovimentaCorrente(getCpf());
 				
 			}
 		});
@@ -97,7 +96,7 @@ public class ViewMenuCliente extends JFrame {
 		btnTransfCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				transi = new ViewTransi();
+				transi = new ViewTransiCorrente(getCpf());
 				
 			}
 		});
@@ -120,7 +119,7 @@ public class ViewMenuCliente extends JFrame {
 
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		lblNewLabel_1.setIcon(new ImageIcon(
-				"C:\\Users\\lionn\\eclipse-workspace\\telas_trabalho_final\\images\\backgroundCapyP.png"));
+				"C:\\TrabalhoPOO\\telas_trabalho_final\\images\\backgroundCapyP.png"));
 		lblNewLabel_1.setBounds(-16, 0, 800, 600);
 		ViewMenuCliente.add(lblNewLabel_1);
 		ViewMenuCliente.setVisible(true);
