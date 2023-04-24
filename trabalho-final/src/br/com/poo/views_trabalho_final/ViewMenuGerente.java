@@ -9,6 +9,7 @@ import javax.swing.JTextPane;
 import br.com.poo.contas.Conta;
 import br.com.poo.io.LeituraEscrita;
 import br.com.poo.pessoa.Funcionario;
+import br.com.poo.pessoa.Gerente;
 
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -23,18 +24,17 @@ public class ViewMenuGerente {
 
 	private JFrame viewMenuGerente;
 	private String cpf;
-	Funcionario func = Funcionario.mapaFuncionarios.get(cpf);
 
-	public ViewMenuGerente(String cpf) {
+	public ViewMenuGerente(String cpf, Funcionario func) throws IOException {
 		this.cpf = cpf;
-		initialize();
+		initialize(func);
 	}
 
-	private void initialize() {
+	private void initialize(Funcionario func) throws IOException {
 		Conta conta = Conta.contas.get(cpf);
 		
 		viewMenuGerente = new JFrame();
-		viewMenuGerente.setTitle("*CapyBank* - Escolha seu Login");
+		viewMenuGerente.setTitle("*CapyBank* - Menu Gerente");
 		viewMenuGerente.setBounds(100, 100, 800, 600);
 		viewMenuGerente.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		viewMenuGerente.getContentPane().setLayout(null);
@@ -47,7 +47,11 @@ public class ViewMenuGerente {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-			//arquivo de leitura escrita
+				try {
+					LeituraEscrita.relatorioGerente(func);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
 				
 			}
 		});
@@ -67,6 +71,7 @@ public class ViewMenuGerente {
 		JFormattedTextField mostarRelatGerente = new JFormattedTextField();
 		mostarRelatGerente.setEnabled(false);
 		mostarRelatGerente.setBounds(79, 69, 646, 335);
+		mostarRelatGerente.setText("Total de Contas Gerenciadas: " + String.valueOf(Conta.qtdContas(func)));
 		viewMenuGerente.getContentPane().add(mostarRelatGerente);
 
 		JButton btnSairRelatGerente = new JButton("Sair");
@@ -79,10 +84,6 @@ public class ViewMenuGerente {
 		lblNewLabel_1.setBounds(-16, 0, 800, 600);
 		viewMenuGerente.getContentPane().add(lblNewLabel_1);
 		viewMenuGerente.setVisible(true);
-	}
-	
-	public void imprimir() throws IOException {
-		LeituraEscrita.relatorioGerente(func);
 	}
 
 	public String getCpf() {

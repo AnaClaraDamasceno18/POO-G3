@@ -26,8 +26,8 @@ public class ViewMenuClienteContaPoupanca extends JFrame {
 	private JFrame ViewMenuCliente;
 	private ViewMovimentaPoupanca poupancaSaque;
 	private ViewMovimentaPoupanca poupancaDep;
+	private ViewMovimentaPoupanca poupancaTransi;
 	private ViewMenuClienteContaPoupanca menuCliente;
-	private ViewTransiPoupanca transi;
 	private JLabel lblCliente;
 
 	public ViewMenuClienteContaPoupanca(String cpf) {
@@ -96,7 +96,7 @@ public class ViewMenuClienteContaPoupanca extends JFrame {
 		btnTransfCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				transi = new ViewTransiPoupanca(getCpf());
+				poupancaTransi = new ViewMovimentaPoupanca(getCpf());
 				
 			}
 		});

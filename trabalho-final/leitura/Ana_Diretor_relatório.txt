@@ -1,0 +1,14 @@
+*************** RELATORIO **************
+Total: 5
+*************** RELATORIO **************
+Total de Contas em ordem alfabética: null
+*************** RELATORIO **************
+Total de Contas em ordem alfabética: null
+*************** RELATORIO **************
+Total de Contas em ordem alfabética: null
+*************** RELATORIO **************
+Total de Contas em ordem alfabética: null
+*************** RELATORIO **************
+Total: 3
+*************** RELATORIO **************
+Total: 3

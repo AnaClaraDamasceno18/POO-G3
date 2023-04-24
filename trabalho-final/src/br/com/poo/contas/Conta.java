@@ -1,18 +1,29 @@
 package br.com.poo.contas;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
+import br.com.poo.io.LeituraEscrita;
 import br.com.poo.pessoa.Cliente;
+import br.com.poo.pessoa.Funcionario;
+import br.com.poo.pessoa.Gerente;
+import br.com.poo.pessoa.Presidente;
 
 public abstract class Conta {
 
 	protected static String agencia;
 	private String numConta;
-	protected Double saldo = 0.0;
+	protected static Double saldo = 0.0;
 	private String tipoConta;
-	private String titular;
-	private String cpf;
+	private static String titular;
+	private static String cpf;
+	public static Integer quantidadeContas = 0;
 
 	public static Map<String, Conta> contas = new HashMap<>();
 
@@ -102,4 +113,35 @@ public abstract class Conta {
 		this.cpf = cpf;
 	}
 	
+	public static Integer qtdContas(Funcionario gerente) {
+		quantidadeContas = 0;
+		for(int i=0; i<contas.size(); i++) {
+			if(contas.get(cpf).getAgencia().equals(contas.get(i).getAgencia())) {
+				quantidadeContas++;
+			}
+		}
+		return quantidadeContas;
+	}
+	
+	public static Double saldoBanco(Funcionario presidente) {
+		Double soma = 0.0;
+		for(Entry<String, Conta> sbanco : contas.entrySet()) {
+			Conta conta = sbanco.getValue();
+			soma += conta.getSaldo();
+		}
+//		for(int i=0; i<contas.size(); i++) {
+//			indice = contas.get(i);
+//			soma += indice.getSaldo();
+//		}
+		return soma;
+	}
+	
+	public static String listasContas(Funcionario diretor) {
+		NavigableMap<String, Conta> lista = new TreeMap<>();
+		for(Map.Entry<String, Conta> entry : lista.entrySet()) {
+			System.out.println(entry.getKey() + " " + entry.getValue());
+		}
+		String receber = null;
+		return receber;
+	}
 }

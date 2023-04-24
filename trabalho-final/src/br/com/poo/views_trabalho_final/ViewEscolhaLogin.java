@@ -72,7 +72,12 @@ public class ViewEscolhaLogin {
 
 			public void actionPerformed(ActionEvent arg0) {
 
-				escolhaFuncionario(getCpf());
+				try {
+					escolhaFuncionario(getCpf());
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 
@@ -91,15 +96,18 @@ public class ViewEscolhaLogin {
 		ViewEscolhaLogin.setVisible(true);
 	}
 
-	public void escolhaFuncionario(String cpf) {
+	public void escolhaFuncionario(String cpf) throws IOException {
 
 		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
+		Funcionario funcionariod = Diretor.mapaFuncionarios.get(cpf);
+		Funcionario funcionariop = Presidente.mapaFuncionarios.get(cpf);
+		
 		if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
-			menuGerente = new ViewMenuGerente(cpf);
+			menuGerente = new ViewMenuGerente(cpf, funcionario);
 		} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
-			menuDiretor = new ViewMenuDiretor(cpf);
+			menuDiretor = new ViewMenuDiretor(cpf, funcionariod, funcionario);
 		} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
-			menuPresidente = new ViewMenuPresidente(cpf);
+			menuPresidente = new ViewMenuPresidente(cpf, funcionariop, funcionario);
 		}
 
 	}

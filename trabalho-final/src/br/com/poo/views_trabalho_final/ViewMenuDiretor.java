@@ -6,11 +6,16 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 
 import br.com.poo.contas.Conta;
+import br.com.poo.io.LeituraEscrita;
+import br.com.poo.pessoa.Diretor;
+import br.com.poo.pessoa.Funcionario;
+import br.com.poo.pessoa.Gerente;
 
 import java.awt.Font;
 import javax.swing.JFormattedTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 
@@ -19,20 +24,15 @@ public class ViewMenuDiretor {
 	private JFrame frmMenuDoDiretor;
 	private String cpf;
 
-	/**
-	 * Create the application.
-	 * @param cpf 
-	 */
-	public ViewMenuDiretor(String cpf) {
+	
+	public ViewMenuDiretor(String cpf, Funcionario diretor, Funcionario gerente) throws IOException {
 		this.cpf = cpf;
-		initialize();
+		initialize(diretor, gerente);
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 */
-	private void initialize() {
+	private void initialize( Funcionario diretor, Funcionario gerente) throws IOException {
 		Conta conta = Conta.contas.get(cpf);
+		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
 
 		frmMenuDoDiretor = new JFrame();
 		frmMenuDoDiretor.setTitle("*CapyBank* - Menu do diretor");
@@ -54,11 +54,33 @@ public class ViewMenuDiretor {
 		JFormattedTextField mostarRelatDiretor = new JFormattedTextField();
 		mostarRelatDiretor.setEnabled(false);
 		mostarRelatDiretor.setBounds(79, 72, 646, 335);
+		mostarRelatDiretor.setText("Total de Contas Gerenciadas: " + String.valueOf(Conta.qtdContas(gerente)));
 		frmMenuDoDiretor.getContentPane().add(mostarRelatDiretor);
 
 		JButton btnGerarRelatGer_Dir = new JButton("Gerar relatório do gerente");
 		btnGerarRelatGer_Dir.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnGerarRelatGer_Dir.setBounds(450, 418, 257, 60);
+		btnGerarRelatGer_Dir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				try {
+					LeituraEscrita.relatorioGerente(gerente);
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				
+			}
+		});
+		btnGerarRelatGer_Dir.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
 		frmMenuDoDiretor.getContentPane().add(btnGerarRelatGer_Dir);
 
 		JButton btnSairRelatDiretor = new JButton("Sair");

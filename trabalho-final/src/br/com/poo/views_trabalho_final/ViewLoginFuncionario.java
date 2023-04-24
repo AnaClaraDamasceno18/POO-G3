@@ -13,7 +13,10 @@ import br.com.poo.enums.PessoaEnum;
 import br.com.poo.io.LeituraEscrita;
 import br.com.poo.menus.MenuLogin;
 import br.com.poo.pessoa.Cliente;
+import br.com.poo.pessoa.Diretor;
 import br.com.poo.pessoa.Funcionario;
+import br.com.poo.pessoa.Gerente;
+import br.com.poo.pessoa.Presidente;
 
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -112,7 +115,12 @@ public class ViewLoginFuncionario {
 
 			public void actionPerformed(ActionEvent arg0) {
 
-				verificaLogin();
+				try {
+					verificaLogin();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 
 			}
 
@@ -155,19 +163,16 @@ public class ViewLoginFuncionario {
 		this.textSenhaFunc = textSenhaFunc;
 	}
 
-	public void verificaLogin() {
+	public void verificaLogin() throws IOException {
 
 		String cpf = txtLoginFunc.getText();
 		String senha = textSenhaFunc.getText();
 
 		Funcionario funcionario = Funcionario.mapaFuncionarios.get(cpf);
+		
 		Cliente cliente = Cliente.mapaClientes.get(cpf);
 		Conta cc = Conta.contas.get(cpf);
 		Conta cp = Conta.contas.get(cpf);
-//		boolean corrente = conta.getTipoConta().equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta());
-//		boolean poupanca = conta.getTipoConta().equalsIgnoreCase(ContaEnum.POUPANCA.getTipoConta());
-
-//		conta.getNumConta().equalsIgnoreCase(ContaEnum.CORRENTE.getTipoConta());
 		
 		if (funcionario != null) {
 			isFuncionario = true;
@@ -183,11 +188,11 @@ public class ViewLoginFuncionario {
 
 		} else if (isFuncionario) {
 			if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.GERENTE.getCargo())) {
-				menuGerente = new ViewMenuGerente(cpf);
+				menuGerente = new ViewMenuGerente(cpf, funcionario);
 			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.DIRETOR.getCargo())) {
-				menuDiretor = new ViewMenuDiretor(cpf);
+				menuDiretor = new ViewMenuDiretor(cpf, funcionario, funcionario);
 			} else if (funcionario.getTipoFuncionario().equalsIgnoreCase(PessoaEnum.PRESIDENTE.getCargo())) {
-				menuPresidente = new ViewMenuPresidente(cpf);
+				menuPresidente = new ViewMenuPresidente(cpf, funcionario, funcionario);
 			}
 
 		} else if (isCliente) {

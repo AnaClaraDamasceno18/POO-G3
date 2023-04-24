@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Map;
+import java.util.NavigableMap;
+import java.util.TreeMap;
 
 import br.com.poo.contas.Conta;
 import br.com.poo.contas.ContaCorrente;
@@ -23,6 +26,8 @@ public class LeituraEscrita {
 
 	static final String PATH_BASICO = ".\\leitura\\";
 	static final String EXTENSAO = ".txt";
+	static String agencia;
+	private static Double saldo;
 
 	public static void leitor(String path) throws IOException {
 		BufferedReader buffRead = new BufferedReader(new FileReader(PATH_BASICO + path));
@@ -216,15 +221,51 @@ public class LeituraEscrita {
 	public static void relatorioGerente(Funcionario func) throws IOException {
 		String nomeArquivo = func.getNome() + "_" + func.getTipoFuncionario() + "_relatório";
 		
-		BufferedWriter buffWriteG = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true));
-		
-		String linha = "*************** BONIFICAÇÃO **************";
-		buffWriteG.append(linha + "\n");
-		
-		int totalContas = Gerente.quantidadeContas;
-		linha = "Total: " + totalContas;
-		buffWriteG.append(linha + "\n");
-		
-		
+		try (BufferedWriter buffWriteG = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true))) {
+			String linha = "*************** RELATORIO **************";
+			buffWriteG.append(linha + "\n");
+			int totalContas = Conta.qtdContas(func);
+			linha = "Total: " + totalContas;
+			buffWriteG.append(linha + "\n");
+			linha = "*************** RELATORIO **************";
+		}
+	
 	}
+
+	public static void relatorioDiretor(Funcionario diretor) throws IOException {
+		String nomeArquivo = diretor.getNome() + "_" + diretor.getTipoFuncionario() + "_relatório";
+		
+		try (BufferedWriter buffWriteD = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true))) {
+			String linha = "*************** RELATORIO **************";
+			buffWriteD.append(linha + "\n");
+			String todasAsContas = Conta.listasContas(diretor);
+			linha = "Total de Contas em ordem alfabética: " + todasAsContas;
+			buffWriteD.append(linha + "\n");
+			linha = "*************** RELATORIO **************";
+		}
+	
+	}
+	
+	public static void relatorioPresidente(Funcionario presidente) throws IOException {
+		String nomeArquivo = presidente.getNome() + "_" + presidente.getTipoFuncionario() + "_relatório";
+		
+		try (BufferedWriter buffWriteP = new BufferedWriter(new FileWriter(PATH_BASICO + nomeArquivo + EXTENSAO, true))) {
+			String linha = "*************** RELATORIO **************";
+			buffWriteP.append(linha + "\n");
+			Double somarTudo = Conta.saldoBanco(presidente);
+			linha = "Total de Capytal do Banco: " + somarTudo;
+			buffWriteP.append(linha + "\n");
+			linha = "*************** RELATORIO **************";
+		}
+	
+	}
+	
+	public String getAgencia() {
+		return agencia;
+	}
+
+	public static Double getSaldo() {
+		return saldo;
+	}
+	
 }
