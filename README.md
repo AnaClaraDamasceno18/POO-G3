@@ -12,7 +12,13 @@ CapyBank é um sistema bancário com as funcionalidades de transferir, sacar e d
 -Comprovante de transações</p>
 -Relatório específico para gerente, diretor e presidente</p>
 -Validações de Try/Catch para evitar erros inesperados</p>
--Validações de métodos do banco</p>                                        
+-Validações de métodos do banco</p>   
+
+## Funcionamento das telas(Jframe)</p>
+![Fluxograma das telas - CapyBank](https://user-images.githubusercontent.com/127156460/234085530-1033e0bc-029d-4e86-983a-ba42e3c19229.png)
+
+
+
 ## Tecnologias utilizadas 
 * -[Eclipse IDE 2023](https://www.eclipse.org/downloads/)
 * -[Trello](https://trello.com/b/jRIJ4QjG/g3-poo)
