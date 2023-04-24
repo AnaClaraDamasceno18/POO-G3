@@ -39,7 +39,8 @@ CapyBank é um sistema bancário com as funcionalidades de transferir, sacar e d
 ![WhatsApp Image 2023-04-24 at 16 04 55 (1)](https://user-images.githubusercontent.com/127156460/234106662-784751e9-1459-4f2d-aa45-301e314c58c7.jpeg)
 
 ## Diagrama de caso de uso 
-![CasoUsoFuncionario](https://user-images.githubusercontent.com/127156460/234112606-802965fc-bf7b-42e9-8b98-dfc26390b9cf.png)</p>
+![cc2cb792-2cf1-4720-abb2-0e8db0bccfe5](https://user-images.githubusercontent.com/127156460/234125893-8ee0424b-c18c-468b-a4d9-93df69e6c802.jpg)
+
 
 ## Tecnologias utilizadas 
 * -[Eclipse IDE 2023](https://www.eclipse.org/downloads/)
