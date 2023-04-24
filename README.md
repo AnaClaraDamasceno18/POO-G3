@@ -54,3 +54,6 @@ CapyBank é um sistema bancário com as funcionalidades de transferir, sacar e d
 * [Jon costa](https://github.com/joncosta-3097)
 * [Felipe Rubino](https://github.com/Felipe-Rubino)
 * [Franklin malala](https://github.com/FranklinMalala)
+
+## Professora 
+[Débora Souza](https://github.com/debysouza)
