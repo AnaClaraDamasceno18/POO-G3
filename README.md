@@ -3,7 +3,7 @@
 </p>
 
 ## Descrição
-Projeto desenvolvido para o serraTEC, Feito pelo grupo 3, matéria POO.</p>
+Projeto desenvolvido para o serratec, Feito pelo grupo 3, matéria POO.</p>
 CapyBank é um sistema bancário com as funcionalidades de transferir, sacar e depositar dinheiro em contas correntes e poupanças. O sistema possui uma interface gráfica desenvolvida em Java Swing, com uma tela de login que verifica se o usuário é gerente, diretor, presidente ou cliente.
 
 ## Funcionalidades</p>
