@@ -1,9 +1,0 @@
-Diretor;Ana;444;1000.00;741852;1234-5
-Corrente;1234-5;00102-2;Ana;444;1000.00
-
-Poupanca;1234-5;00304-4;Abacate;666;3000.00
-Presidente;Abacate;666;10000.00;6363;1234-3
-
-Gerente;Caio;333;10000.00;caio123;1234-5
-Poupanca;1234-5;00304-4;Caio;333;3000.00
-Corrente;1234-5;00102-2;Caio;333;1000.00

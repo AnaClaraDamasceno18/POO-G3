@@ -1,4 +1,0 @@
-*************** RELATORIO **************
-Total de Capytal do Banco: 9455.0
-*************** RELATORIO **************
-Total: 5
